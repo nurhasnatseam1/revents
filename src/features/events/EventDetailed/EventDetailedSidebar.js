@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 
-const eventDetailedSidebar=({attendees})=>{
-      const isHost=useState(false)
+const EventDetailedSidebar=({attendees})=>{
+      const [isHost,setIsHost]=useState(false)
       return (
             <Fragment>
                   <Segment textAlign="center" style={{border:'none'}} attached='top' secondary inverted color='teal'>
@@ -39,4 +39,4 @@ const eventDetailedSidebar=({attendees})=>{
 }
 
 
-export default eventDetailedSidebar;
+export default EventDetailedSidebar;

@@ -1,5 +1,5 @@
 import {SubmissionError,reset} from 'redux-form';
-import {closeModal} from '../modal/modalActions';
+import {closeModal} from '../modals/modalAction';
 import {toastr} from 'react-redux-toastr';
 
 

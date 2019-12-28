@@ -1,6 +1,6 @@
 import React,{Component, Fragment} from 'react';
 import EventListItem from './EventListItem';
-import InfiniteScroll from './react-infinite-scroller';
+import InfiniteScroll from 'react-infinite-scroller';
 
 
 

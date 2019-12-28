@@ -1,19 +1,19 @@
 import React ,{Component, Fragment} from 'react';
-import EventDashboard from '../../features/events/EventDashboard';
+import EventDashboard from '../../features/events/EventDashboard/EventDashboard';
 import Navbar from '../../features/nav/Navbar/NavBar';
-import {Container} from './semantic-ui-react';
-import {Route,Switch,withRouter} from 'react-router-dom';
+import {Container} from 'semantic-ui-react';
+import {Router,Route,Switch,withRouter} from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
 
 
 
-import eventDetailedPage from '../../features/events/EventDetailed/EventDetailedPage';
+import EventDetailedPage from '../../features/events/EventDetailed/EventDetailedPage';
 import PeopleDashboard from '../../features/user/PeopleDashboard/peopleDashboard';
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
-import SettingsDashboard from '../../features/user/settings/SettignsDashboard';
-import EventForm from '../../features/events/EventForm';
-import ModalManager from '../../features/models/ModalManager';
-import {UserIsAuthenticated} from '../../features/auth/AuthWrapper';
+import SettingsDashboard from '../../features/user/settings/SettingsDashboard';
+import EventForm from '../../features/events/EventForm/EventForm';
+import ModalManager from '../../features/modals/modalManager';
+import {UserIsAuthenticated} from '../../features/auth/authWrapper';
 
 
 
@@ -25,8 +25,9 @@ class App extends Component{
                               <Route exact path='/' component={HomePage}/>
                               <Route path='/(.+)' render={()=>(
                                     <Fragment>
-                                          <NavBar>
+                                          <Navbar/>
                                                 <Container className='main'>
+                                                      <Router>
                                                       <Switch key={this.props.location.key}>
                                                             <Route exact path='/events' component={EventDashboard}/>
                                                             <Route exact path='/events/:id' component={EventDetailedPage}/>
@@ -35,11 +36,13 @@ class App extends Component{
                                                             <Route path='settings' component={UserIsAuthenticated(SettingsDashboard)}/>
                                                             <Route path={['/createEvent','/manage/:id']} component={UserIsAuthenticated(EventForm)}/>
                                                       </Switch>
+                                                      </Router>
                                                 </Container>
-                                          </NavBar>
                                     </Fragment>
                               )}/>
                   </Fragment>
             )
       }
 }
+
+export default withRouter(App);

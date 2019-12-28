@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Segment,Grid,Icon,Button} from 'semantic-ui-react';
-import EventDetailedMap from './EventDetailedMap';
+import EventDetailedMap from './EventDetialedMap'
 import {format} from 'date-fns';
 
 
@@ -51,3 +51,5 @@ const EventDetailedInfo=({event})=>{
 
       )
 }
+
+export default EventDetailedInfo;

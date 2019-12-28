@@ -20,3 +20,5 @@ const UserDetailedSideBar=({isCurrentUser})=>{
             </Grid.Column>
       )
 }
+
+export default UserDetailedSideBar;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Segment,Container,Header,Image,Button,Icon} from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -9,10 +10,10 @@ const HomePage=({history})=>{
             <Segment inverted textAlign='center' vertical className='masthead'>
                   <Container text>
                         <Header as='h1' inverted>
-                              <Image size='massive' src='/assets/long.png' alt='logo' style={{marginBottom:12}}/>
+                              <Image size='massive' src='/assets/logo.png' alt='logo' style={{marginBottom:12}}/>
                               Re-vents
                         </Header>
-                        <Button size='huge' inverted onClick={()=>history.phush('/events')}>
+                        <Button size='huge' inverted onClick={()=>history.push('/events')}>
                               Get Started
                         </Button>
                   </Container>
@@ -21,4 +22,4 @@ const HomePage=({history})=>{
 }
 
 
-export default HomePage;
+export default withRouter(HomePage);

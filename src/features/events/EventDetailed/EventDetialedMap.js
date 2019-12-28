@@ -18,3 +18,5 @@ const EventDetailedMap=({Lat,Lng})=>{
             </Segment>
       )
 }
+
+export default EventDetailedMap;

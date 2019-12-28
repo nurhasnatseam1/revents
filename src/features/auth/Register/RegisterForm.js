@@ -4,11 +4,11 @@ import {Form,Segment,Button,Label,Divider} from 'semantic-ui-react';
 import {reduxForm,Field} from 'redux-form';
 import {combineValidators,isRequired} from 'revalidate';
 import TextInput from '../../../app/common/form/TextInput';
-import {register} from '../authActions';
+import {registerUser} from '../authActions';
 import SocialLogin from '../SocialLogin/SocilaLogin';
 
 
-const actions={register}
+const actions={registerUser}
 
 
 
@@ -21,7 +21,7 @@ const validate=combineValidators({
 
 const RegisterForm=({handleSubmit,registerUser,error,invalid,submitting})=>{
       return (
-            <Form size='large' autoComplete='off' onSubmit={handleSubmit(register)}>
+            <Form size='large' autoComplete='off' onSubmit={handleSubmit(registerUser)}>
                   <Segment>
                         <Field name='displayName' type='text' component={TextInput} placeholder='Known as'></Field>
                         <Field name='email' type="text" component={TextInput} placeholder='Password'></Field>

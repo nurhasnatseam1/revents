@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Modal,Button,Devider} from 'semantic-ui-react';
+import {Modal,Button,Divider} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {closeModal,openModal} from './modalAction';
 import {withRouter} from 'react-router';
@@ -33,7 +33,7 @@ class UnauthModal extends Component{
                                           Register
                                     </Button>
                               </Button.Group>
-                              <Devider></Devider>
+                              <Divider></Divider>
                               <div style={{textAlign:'center'}}>
                                     <p>Or click cancel to continue as a guest</p>
                                     <Button onClick={this.handleCloseModal}>Close</Button>

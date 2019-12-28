@@ -1,5 +1,5 @@
 import React from 'react';
-import {Feed } from 'sematic-ui-react';
+import {Feed } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {formatDistance} from 'date-fns';
 

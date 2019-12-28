@@ -2,7 +2,7 @@ import {toastr} from 'react-redux-firebase';
 import {asyncActionStart,asyncActionFinish,asyncActionError} from '../async/asyncAction';
 import cuid from 'cuid';
 import firebase from '../../app/config/firebase';
-import {FETCH_EVENTS} from '../event/eventConstants';
+import {FETCH_EVENTS} from '../events/eventConstants';
 import { FormTextArea } from 'semantic-ui-react';
 
 

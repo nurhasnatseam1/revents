@@ -1,5 +1,5 @@
 import {connectedReduxRedirect} from 'redux-auth-wrapper/history4/redirect';
-import {openModal} from '../modals/modalActions';
+import {openModal} from '../modals/modalAction';
 
 export const UserIsAuthenticated=connectedReduxRedirect({
       wrapperDisplayName:'UserIsAuthenticated',

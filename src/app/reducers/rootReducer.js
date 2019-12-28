@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {reducer as FormReducer} from 'redux-form';
 import {reducer as ToastrReducer} from 'react-redux-toastr';
 
-import eventReducer from '../../features/event/eventReducer';
+import eventReducer from '../../features/events/eventReducer';
 import modalReducer from '../../features/events/eventReducer';
 import authReducer from '../../features/auth/authReducer';
 import asyncReducer from '../../features/async/asyncReducer';

@@ -15,11 +15,18 @@ const mapState=(state,ownProps)=>({
 
 const modalManager=({currentModal})=>{
       let renderedModal;
-      if (currentModal){
-            const {modalType,modalProps}=currentModal;
-            const ModalComponent=modalLookup[modalType]
-            renderedModal=<ModalComponent {...modalProps}></ModalComponent>
-      }
 
-      return renderedModal
+      if (currentModal) {
+          const {modalType, modalProps} = currentModal;
+          const ModalComponent = modalLookup[modalType];
+  
+          renderedModal = <ModalComponent {...modalProps}/>
+      }
+      return (
+          <span>{renderedModal}</span>
+      )
 }
+
+
+
+export default modalManager

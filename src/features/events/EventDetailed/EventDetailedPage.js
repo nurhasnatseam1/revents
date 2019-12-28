@@ -7,10 +7,10 @@ import EventDetailedChat from './EventDetailedChat';
 import EventDetailedSidebar from './EventDetailedSidebar';
 import { withFirestore, firebaseConnect, isEmpty } from 'react-redux-firebase';
 import { compose } from 'redux';
-import { objectToArray, createDataTree } from '../../../app/common/util/helpers';
+import { objectToArray, createDataTree } from '../../../app/common/utils/helpers';
 import { goingToEvent, cancelGoingToEvent } from '../../user/userActions';
 import { addEventComment } from '../eventActions';
-import {openModal} from '../../modals/modalActions'
+import {openModal} from '../../modals/modalAction';
  
 const mapState = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
