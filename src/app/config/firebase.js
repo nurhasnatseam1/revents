@@ -19,6 +19,7 @@ const firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.storage();
+firebase.firestore();
 
 
 export default firebase;

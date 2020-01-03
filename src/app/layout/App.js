@@ -2,7 +2,7 @@ import React ,{Component, Fragment} from 'react';
 import EventDashboard from '../../features/events/EventDashboard/EventDashboard';
 import Navbar from '../../features/nav/Navbar/NavBar';
 import {Container} from 'semantic-ui-react';
-import {Router,Route,Switch,withRouter} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Switch,withRouter} from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
 
 

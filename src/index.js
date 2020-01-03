@@ -9,38 +9,47 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter  } from 'react-router-dom';
 import { configureStore } from './app/store/configureStore';
 import ScrollToTop from './app/common/utils/ScrollToTop';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import firebase from './app/config/firebase';
+import { createFirestoreInstance, firestoreReducer } from 'redux-firestore';
 
 const store = configureStore();
 
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+  // enableClaims: true // Get custom claims along with the profile
+}
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
+
 const rootEl = document.getElementById('root');
 
-let render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter>
-        <ScrollToTop>
-          <ReduxToastr 
-            position='bottom-right'
-            transitionIn='fadeIn'
-            transitionOut='fadeOut'
-          />
-          <App />
-        </ScrollToTop>
-      </BrowserRouter>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <BrowserRouter>
+          <ScrollToTop>
+            <ReduxToastr 
+              position='bottom-right'
+              transitionIn='fadeIn'
+              transitionOut='fadeOut'
+            />
+            <App />
+          </ScrollToTop>
+        </BrowserRouter>
+      </ReactReduxFirebaseProvider>
     </Provider>,
     rootEl
   );
-};
 
-if (module.hot) {
-  module.hot.accept('./app/layout/App', () => {
-    setTimeout(render);
-  });
-}
 
-store.firebaseAuthIsReady.then(() => {
-  render();
-})
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

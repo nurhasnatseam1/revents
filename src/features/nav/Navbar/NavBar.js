@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
-import signedOutMenu from '../Menus/SignedOutMenu';
+import SignedOutMenu from '../Menus/SignedOutMenu';
 import SignedInMenu from '../Menus/SignedInMenu';
 import { withFirebase } from 'react-redux-firebase';
 import { connect } from 'react-redux';
@@ -32,6 +32,7 @@ class NavBar extends Component{
       render(){
             const {auth,profile}=this.props;
             const authenticated=auth.isLoaded && !auth.isEmpty;
+            console.log(authenticated)
             return (
                   <Menu inverted fixed='top'>
                         <Container>
@@ -49,7 +50,7 @@ class NavBar extends Component{
                               )}
 
                               {authenticated ? (<SignedInMenu signout={this.handleSignOut} profie={profile} auth={auth} />):
-                                          <signedOutMenu signIn={this.handleSignIn} register={this.handleRegister}/>
+                                          <SignedOutMenu signIn={this.handleSignIn} register={this.handleRegister}/>
                               }
                         </Container>
                   </Menu>

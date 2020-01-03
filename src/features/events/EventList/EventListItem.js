@@ -35,7 +35,7 @@ class EventListItem extends Component{
                         </Segment>
                         <Segment clearing>
                                                 <span>{event.description}</span>
-                                                <Button as={Link} to={`/events/${event.id}`} color='teal' floated='right' context="View"/>
+                                                <Button as={Link} to={`/events/${event.id}`} color='teal' floated='right' content="View"/>
                         </Segment>
                   </Segment.Group>
             )
