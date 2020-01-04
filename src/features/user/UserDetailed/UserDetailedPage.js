@@ -20,8 +20,10 @@ import {getUserEvents} from '../userActions';
 const mapState=(state,ownProps)=>{
       let userUid=null;
       let profile={};
-      if(ownProps.match.params.id===state.auth.uid){
+      if(ownProps.match.params.id===state.firebase.auth.uid){
             profile=state.firebase.profile
+            userUid=state.firebase.auth.uid
+
       }else{
             profile=!isEmpty(state.firestore.ordered.profile)&& state.firestore.ordered.profile[0]
             userUid=ownProps.match.params.id;
@@ -50,6 +52,7 @@ class UserDetailedPage extends Component{
       }
 
       changeTab=(e,data)=>{
+            console.log(data.activeIndex)
             this.props.getUserEvents(this.props.userUid,data.activeIndex)
 
       }
@@ -61,6 +64,10 @@ class UserDetailedPage extends Component{
 
             const isCurrentUser=auth.uid===match.params.id;
             const loading=Object.values(requesting).some(a=>a===true)
+            console.log(
+                  'there goes the user uid ......boss'
+            )
+            console.log(userUid)
             if (loading) return(
                   <LoadingComponent inverted={true}/>
             )

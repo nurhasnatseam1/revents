@@ -15,7 +15,7 @@ import DropzoneInput from './DropezoneInput';
 
 const query=({auth})=>{
       return [
-            {collection:'users',doc:auth.uid,subcollection:[{collection:'photos'}],storeAs:'photos'}
+            {collection:'users',doc:auth.uid,subcollections:[{collection:'photos'}],storeAs:'photos'}
       ]
 }
 
@@ -23,7 +23,7 @@ const query=({auth})=>{
 const mapState=state=>({
       auth:state.firebase.auth,
       profile:state.firebase.profile,
-      photos:state.firestore.ordered.photo,
+      photos:state.firestore.ordered.photos,
       loading:state.async.loading,
 })
 
@@ -114,7 +114,7 @@ const PhotosPage=({uploadProfileImage,photos,profile,deletePhoto,setMainPhoto,lo
                         </Grid.Row>
                   </Grid>
                   <Divider/>
-                  <UserPhotos photos={photos} profile={profile} deltePhoto={handleDeletePhoto} setMainPhoto={handleSetMainPhoto} loading={loading}/>
+                  <UserPhotos photos={photos} profile={profile} deletePhoto={handleDeletePhoto} setMainPhoto={handleSetMainPhoto} loading={loading}/>
             </Segment>
       )
 }

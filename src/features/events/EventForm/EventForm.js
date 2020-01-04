@@ -17,6 +17,7 @@ import SelectInput from '../../../app/common/form/SelectInput';
 import DateInput from '../../../app/common/form/DateInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
 import { withFirestore } from 'react-redux-firebase';
+import { toastr } from 'react-redux-toastr';
 
 const mapState = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
@@ -97,7 +98,7 @@ class EventForm extends Component {
         this.props.history.push(`/events/${createdEvent.id}`);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   };
 

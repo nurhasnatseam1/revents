@@ -25,7 +25,7 @@ const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
 }
 
 const rootEl = document.getElementById('root');

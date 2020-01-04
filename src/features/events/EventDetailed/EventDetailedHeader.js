@@ -23,13 +23,13 @@ const EventDetailedHeader=({event,isHosting,isGoing,goingToEvent,cancelGoingToEv
       return(
             <Segment>
                   <Segment basic attached='top' style={{padding:0}}>
-                        <Image src={`/assets/category/Images/${event.category.jpg}`} fluid style={eventImageStyle}/>
+                        <Image src={`/assets/categoryImages/${event.category}.jpg`} fluid style={eventImageStyle}/>
                         <Segment basic style={eventImageTextStyle}>
                               <Item.Group>
                                     <Item>
                                           <Item.Content>
                                                 <Header size='huge' content={event.title} style={{color:'white'}}/>
-                                                <p>{event.date && format(event.date.toDate,'dd LLL YYY')}</p>
+                                                <p>{event.date && format(event.date.toDate(),'dd LLL YYY')}</p>
                                                 <p>hosted by {' '} <strong><Link to={`/profile/${event.hostUid}`} style={{color:'white'}}></Link>{event.hostedBy}</strong></p>
                                           </Item.Content>
                                     </Item>

@@ -9,7 +9,8 @@ class CropperInput extends Component{
             if(typeof this.refs.cropper.getCroppedCanvas()==='undefined'){
                   return ;
             }
-            this.refs.cropper.getCroppedCanvas.toBolb(blob=>{
+            console.log(this.refs.cropper.getCroppedCanvas)
+            this.refs.cropper.getCroppedCanvas().toBlob(blob=>{
                   setCropResult(URL.createObjectURL(blob))
                   setImage(blob)
             })

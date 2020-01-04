@@ -28,6 +28,7 @@ const mapState = (state, ownProps) => {
 
   return {
     event,
+    eventLoaded:state.firestore.ordered.events,
     loading: state.async.loading,
     auth: state.firebase.auth,
     eventChat:
@@ -47,6 +48,7 @@ class EventDetailedPage extends Component {
   async componentDidMount() {
     const { firestore, match } = this.props;
     await firestore.setListener(`events/${match.params.id}`);
+    console.log('set for listener ............................................................................................./n........................................')
   }
 
   async componentWillUnmount() {
@@ -62,6 +64,7 @@ class EventDetailedPage extends Component {
       cancelGoingToEvent,
       addEventComment,
       eventChat,
+      eventLoaded,
       loading,
       openModal
     } = this.props;
@@ -71,6 +74,15 @@ class EventDetailedPage extends Component {
     const isGoing = attendees && attendees.some(a => a.id === auth.uid);
     const chatTree = !isEmpty(eventChat) && createDataTree(eventChat);
     const authenticated = auth.isLoaded && !auth.isEmpty;
+    console.log(event)
+    console.log(eventLoaded)
+
+    if(!eventLoaded){
+      return (
+        <div>Event is not yet loaded</div>
+      )
+    }
+
     return (
       <Grid>
         <Grid.Column width={10}>

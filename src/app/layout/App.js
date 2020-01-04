@@ -27,16 +27,15 @@ class App extends Component{
                                     <Fragment>
                                           <Navbar/>
                                                 <Container className='main'>
-                                                      <Router>
                                                       <Switch key={this.props.location.key}>
                                                             <Route exact path='/events' component={EventDashboard}/>
                                                             <Route exact path='/events/:id' component={EventDetailedPage}/>
-                                                            <Route path='/people' component={UserIsAuthenticated(PeopleDashboard)}/>
-                                                            <Route path='/people/:id' component={UserIsAuthenticated(UserDetailedPage)}/>
-                                                            <Route path='settings' component={UserIsAuthenticated(SettingsDashboard)}/>
-                                                            <Route path={['/createEvent','/manage/:id']} component={UserIsAuthenticated(EventForm)}/>
+                                                            <Route exact path='/hello' render={()=><div>hello</div>}/>
+                                                            <Route exact path='/people' component={UserIsAuthenticated(PeopleDashboard)}/>
+                                                            <Route exact path='/profile/:id' component={UserIsAuthenticated(UserDetailedPage)}/>
+                                                            <Route  path='/settings' component={UserIsAuthenticated(SettingsDashboard)}/>
+                                                            <Route exact path={['/createEvent','/manage/:id']} component={UserIsAuthenticated(EventForm)}/>
                                                       </Switch>
-                                                      </Router>
                                                 </Container>
                                     </Fragment>
                               )}/>

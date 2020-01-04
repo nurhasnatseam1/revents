@@ -1,8 +1,9 @@
 import React from 'react';
 import { Menu, Image, Dropdown } from "semantic-ui-react"
 import { Link } from 'react-router-dom';
+import {logout} from '../../auth/authActions';
 
-const SignedInMenu=({signOut,profile,auth})=>{
+const SignedInMenu=({signout,profile,auth})=>{
       return (
             <Menu.Item position='right'>
                   <Image avatar spaced='right' src={profile.photoUrl||'/assets/user.png'}/>
@@ -13,7 +14,7 @@ const SignedInMenu=({signOut,profile,auth})=>{
                               <Dropdown.Item text="MY network" icon="users"/>
                               <Dropdown.Item as={Link} to={`/profile/${auth.uid}`} text="MY profile" icon="user"/>
                               <Dropdown.Item as={Link} to={`/settings`}text="Settings" icon="settings"/>
-                              <Dropdown.Item onClick={signOut}text="Sign out" icon="power"/>
+                              <Dropdown.Item onClick={signout}text="Sign out" icon="power"/>
                         </Dropdown.Menu>
                   </Dropdown>
             </Menu.Item>

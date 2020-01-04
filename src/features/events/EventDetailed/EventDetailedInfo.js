@@ -25,7 +25,7 @@ const EventDetailedInfo=({event})=>{
                               </Grid.Column>
                               <Grid.Column width={15}>
                                     {event.date && (
-                                    <span>{format(event.date.toDate(),'EEE do LLL')} at {format(event.date.toDate()),'h:mm a'}</span>
+                                    <span>{format(event.date.toDate(),'EEE do LLL')} at {format(event.date.toDate(),'h:mm a')}</span>
                                     )}
                               </Grid.Column>
                         </Grid>
@@ -43,7 +43,7 @@ const EventDetailedInfo=({event})=>{
                         </Grid.Column>
                         </Grid>
                   </Segment>
-                  {!isMapOpen && (
+                  {isMapOpen && (
                         <EventDetailedMap lat={event.venueLatLng.Lat} lng={event.venueLatLng.Lng}/>
                   )}
 

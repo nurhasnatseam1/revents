@@ -19,6 +19,7 @@ const modalManager=({currentModal})=>{
       if (currentModal) {
           const {modalType, modalProps} = currentModal;
           const ModalComponent = modalLookup[modalType];
+          console.log(modalType,ModalComponent)
   
           renderedModal = <ModalComponent {...modalProps}/>
       }
@@ -29,4 +30,4 @@ const modalManager=({currentModal})=>{
 
 
 
-export default modalManager
+export default connect(mapState)(modalManager)

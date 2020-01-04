@@ -1,9 +1,11 @@
-import {toastr} from 'react-redux-firebase';
+
 import {asyncActionStart,asyncActionFinish,asyncActionError} from '../async/asyncAction';
 import cuid from 'cuid';
 import firebase from '../../app/config/firebase';
 import {FETCH_EVENTS} from '../events/eventConstants';
 import { FormTextArea } from 'semantic-ui-react';
+import { toastr } from 'react-redux-toastr';
+
 
 
 export const updateProfile=user=>async (dispatch,getState,{getFirebase,getFirestore})=>{
@@ -15,7 +17,6 @@ export const updateProfile=user=>async (dispatch,getState,{getFirebase,getFirest
             await firebase.updateProfile(updatedUser);
             toastr.success('Success','Your profile has been updated')
       }catch(error){
-            console.log(error)
             toastr.error('Error','there  was an error updating your profile')
       }
 }
@@ -100,11 +101,11 @@ export const setMainPhoto=photo=>async (dispatch,getState,{getFirebase,getFirest
                   if(event.data().hostUid===user.uid){
                         batch.update(eventDocRef,{
                               hostPhotoURl:photo.url,
-                              [`/attendee.${user.uid}.photoURL`]:photo.url
+                              [`attendee.${user.uid}.photoURL`]:photo.url
                         })
                   }else{
                         batch.update(eventDocRef,{
-                              [`/attendee.${user.uid.photoURL}`]:photo.url
+                              [`attendee.${user.uid}.photoURL`]:photo.url
                         })
                   }
 
@@ -199,16 +200,20 @@ export const getUserEvents=(userUid,activeTab)=>async (dispatch,getState,{getFir
             default:
                   query=eventsRef.where('userUid','==',userUid)
                   .orderBy('eventDate','desc')
-                  break
+                  break;
       }
 
       try{
             let querySnap=await query.get()
+            console.log(`consoling event attendee query snap`)
+            console.log(querySnap)
             let events=[]
             for(let i=0;i<querySnap.docs.length;i++){
                   let evt=await firestore.collection('events').doc(querySnap.docs[i].data().eventId).get()
                   events.push({...evt.data(),id:evt.id})
             }
+            console.log('consoling the events')
+            console.log(events)
             dispatch({type:FETCH_EVENTS,payload:{events}})
             dispatch(asyncActionFinish())
       }catch(error){
