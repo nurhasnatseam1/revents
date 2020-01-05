@@ -8,6 +8,8 @@ import TextArea from '../../../app/common/form/TextArea';
 class EventDetailedChatForm extends Component{
       handleCommentSubmit=values=>{
             const {addEventComment,reset,eventId,closeForm,parentId}=this.props;
+            console.log('there goes add event comment')
+            console.log(addEventComment)
             addEventComment(eventId,values,parentId);
             reset();
             if(parentId !== 0){
